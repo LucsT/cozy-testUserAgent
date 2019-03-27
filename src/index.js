@@ -40,7 +40,18 @@ async function start(fields) {
 
   await requestCheerioUserAgent('https://example.com')
   // Give the default UA
+  // AND IT'S A BUG
 
   await requestUserAgent('https://example.com')
   // Give the test UA
 }
+
+
+// Problem is repeatable with same kind of request instance to saveBills
+/*
+
+await saveBills(entries, fields, {
+                                  requestInstance: requestCheerioUserAgent
+                                 })
+  BUG: Do not use the edited user agent
+*/
